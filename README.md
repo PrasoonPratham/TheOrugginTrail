@@ -1,4 +1,6 @@
+Test change
 # TheOrugginTrail
+
 A MUD (and eventually also Dojo, World Engine, and who-knows) based Zork-like experiment in fully onchain text adventures, onchain games framework interoperability, and the engines that drive them.
 What lies ahead, is anyone's guess...
 
