@@ -8,8 +8,7 @@
     "deploy": "npx hardhat deploy",
     "build:mud": "cd $MUD_CONTRACTS_PATH && pnpm run build",
     "build:all": "pnpm run build:mud && pnpm run compile"
-  }
-  ,
+  },
   "devDependencies": {
     "@nomicfoundation/hardhat-ethers": "^3.0.0",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
@@ -25,6 +24,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@fluent.xyz/hardhat-plugin": "^1.0.0",
     "ethers": "^6.12.2",
     "fs": "^0.0.1-security"
   }

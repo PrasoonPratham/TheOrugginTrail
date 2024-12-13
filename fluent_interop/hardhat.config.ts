@@ -1,23 +1,30 @@
-import { HardhatUserConfig } from "hardhat/types";
-import "hardhat-deploy";
-import "@nomicfoundation/hardhat-toolbox";
-import "./tasks/greeting";
-import * as dotenv from "dotenv";
-dotenv.config();
+require('dotenv/config');
+import { HardhatUserConfig } from 'hardhat/config';
+import '@nomicfoundation/hardhat-toolbox';
+import '@fluent.xyz/hardhat-plugin';
+import '@nomicfoundation/hardhat-ignition';
 
-const DEPLOYER_PRIVATE_KEY = process.env.DEPLOYER_PRIVATE_KEY || "";
+const DEPLOYER_PRIVATE_KEY = process.env.DEPLOYER_PRIVATE_KEY || '';
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "dev",
+  defaultNetwork: 'local',
   networks: {
+    local: {
+      url: 'http://127.0.0.1:8545',
+      accounts: {
+        mnemonic: 'test test test test test test test test test test test junk',
+        count: 10,
+      },
+      chainId: 1337,
+    },
     dev: {
-      url: "https://rpc.dev.gblend.xyz/",
+      url: 'https://rpc.dev.gblend.xyz/',
       accounts: [DEPLOYER_PRIVATE_KEY],
       chainId: 20993,
     },
   },
   solidity: {
-    version: "0.8.24",
+    version: '0.8.27',
     settings: {
       optimizer: {
         enabled: true,
@@ -25,11 +32,14 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  namedAccounts: {
-    deployer: {
-      default: 0,
-    },
-  },
+  fluent: {},
 };
 
 export default config;
+
+
+
+
+
+
+
