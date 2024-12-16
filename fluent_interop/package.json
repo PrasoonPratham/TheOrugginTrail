@@ -1,7 +1,7 @@
 {
   "name": "blendedapp",
   "version": "1.0.0",
-  "description": "Blended Hello, World",
+  "description": "amusing_death_but_blended",
   "main": "index.js",
   "scripts": {
     "compile": "npx hardhat compile",
@@ -24,7 +24,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@fluent.xyz/hardhat-plugin": "^1.0.0",
+    "@fluent.xyz/hardhat-plugin": "github:ArchetypalTech/hardhat-blended-plugin#feat/contract-discovery",
     "@wagmi/core": "^2.16.0",
     "ethers": "^6.12.2",
     "fs": "^0.0.1-security",
