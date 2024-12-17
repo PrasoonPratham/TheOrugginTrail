@@ -26,4 +26,4 @@ fs_permissions = [{ access = "read", path = "./"}]
 eth_rpc_url = "https://follower.testnet-chain.linfra.xyz"
 
 [profile.fluent-testnet]
-eth_rpc_url = "https://rpc.dev1.fluentlabs.xyz/"
+eth_rpc_url = "https://rpc.dev.gblend.xyz//"

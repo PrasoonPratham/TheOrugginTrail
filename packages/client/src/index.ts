@@ -4,6 +4,7 @@ import { LitTerminal } from './lit/lit-term';
 import './lit/lit-term';
 import './styles/setupStyles';
 import './lit/wallet/lit-wallet';
+import './lit/auth/game-auth';
 import { setupThree, updateScene } from './three';
 
 const {

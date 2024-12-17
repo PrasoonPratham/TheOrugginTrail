@@ -6,15 +6,16 @@ import { http, createConfig, Connector, getToken,readContract } from '@wagmi/cor
 import { mainnet, sepolia } from '@wagmi/core/chains'
 import { walletConnect, injected } from '@wagmi/connectors'
 import { defineChain,erc721Abi } from "viem";
+import { gameAuth } from '../auth/game-auth';
 
 const fluentTestnet = defineChain({
-  id: 1337,
+  id: 20993,
   name: 'Fluent Testnet',
   network: 'fluent-testnet',
   nativeCurrency: { name: 'EtherDollar', symbol: 'WZT', decimals: 18 },
   rpcUrls: {
-    default: { http: ['https://rpc.dev1.fluentlabs.xyz'] },
-    public: { http: ['https://rpc.dev1.fluentlabs.xyz'] },
+    default: { http: ['https://rpc.dev.gblend.xyz/'] },
+    public: { http: ['https://rpc.dev.gblend.xyz/'] },
   },
   blockExplorers: {
     default: { name: 'Blockscout', url: 'https://blockscout.dev1.fluentlabs.xyz' },
@@ -131,12 +132,16 @@ class LitWallet extends LitElement {
 
   private async disconnectWallet() {
     try {
-      const currentConnector = this.connectors[0]; // Assuming first connector
+      const currentConnector = this.connectors[0];
       if (currentConnector) {
         await currentConnector.disconnect();
         this.accounts = [];
         this.currentStep = 'connect';
         this.history.push('Wallet disconnected successfully');
+        const authElement = this.closest('game-auth');
+        if (authElement) {
+          (authElement as GameAuth).setAuthenticated(false);
+        }
       }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Disconnection failed';
@@ -147,7 +152,11 @@ class LitWallet extends LitElement {
 
   private async connectToWallet(connector: Connector) {
     try {
-      await connector.connect();
+      // Connect with Fluent chain specified
+      await connector.connect({
+        chainId: fluentTestnet.id
+      });
+      
       this.accounts = [...await connector.getAccounts()];
 
       if (this.accounts.length > 0) {
@@ -168,11 +177,8 @@ class LitWallet extends LitElement {
 
   private async selectAccount(account: string, connector: Connector) {
     try {
-      // Network-aware contract address selection
-      const erc721TokenAddress = 
-        config.chains.includes(mainnet) 
-          ? '0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB'  // Mainnet CryptoPunks
-          : '0x1E988ba4692e52d00B88D8834dc49B3A1d7B57a9';  // Sepolia Test NFT
+      // Always use Fluent testnet NFT contract
+      const erc721TokenAddress = '0x1E988ba4692e52d00B88D8834dc49B3A1d7B57a9';  // Fluent Test NFT
   
       try {
         // Check token balance for the account
@@ -186,8 +192,6 @@ class LitWallet extends LitElement {
         // More detailed logging and verification
         if (Number(balance) > 0) {
           this.history.push(`NFT Token verified: ${balance} tokens owned`);
-          // Potential additional checks
-          // Example: Check specific token attributes or ownership
           this.authenticateUser(account);
         } else {
           this.history.push("Access denied: No NFT tokens found");
@@ -206,10 +210,11 @@ class LitWallet extends LitElement {
   }
   
   private authenticateUser(account: string) {
-    // Additional authentication logic
-    // Could include more sophisticated token checks
     this.history.push("Welcome, authenticated user!");
-    // Potentially set user session, permissions, etc.
+    const authElement = this.closest('game-auth');
+    if (authElement) {
+      (authElement as GameAuth).setAuthenticated(true);
+    }
   }
 
   private handleInput(e: Event) {
