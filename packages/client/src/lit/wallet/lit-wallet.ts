@@ -219,14 +219,16 @@ class LitWallet extends LitElement {
 
   private async handleEnter(e: KeyboardEvent) {
     if (e.key === 'Enter') {
+      const cleanInput = this.inputValue.replace('> ', '');
+      
       if (this.currentStep === 'connect') {
-        if (this.inputValue.toLowerCase() === '> connect') {
+        if (cleanInput.toLowerCase() === 'connect') {
           await this.propmtConnect();
         } else {
           this.history.push("Unknown command. Type 'connect' to see available wallets.");
         }
       } else if (this.currentStep === 'wallet') {
-        const walletChoice = parseInt(this.inputValue) - 1;
+        const walletChoice = parseInt(cleanInput) - 1;
         const selectedConnector = this.connectors[walletChoice];
 
         if (selectedConnector) {
@@ -235,7 +237,7 @@ class LitWallet extends LitElement {
           this.history.push("Invalid selection. Please try again.");
         }
       } else if (this.currentStep === 'account') {
-        const accountChoice = parseInt(this.inputValue) - 1;
+        const accountChoice = parseInt(cleanInput) - 1;
         const selectedAccount = this.accounts[accountChoice];
 
         if (selectedAccount) {

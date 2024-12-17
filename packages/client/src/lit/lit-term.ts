@@ -84,7 +84,7 @@ export class LitTerminal extends LitElement {
 
   private handleEnter(e: KeyboardEvent) {
     if (e.key === 'Enter') {
-      const commandStr = this.stripCommandString(this.inputValue);
+      const commandStr = this.inputValue;
       this.dispatchEvent(
         new CustomEvent('command-update', {
           detail: { value: commandStr },
@@ -92,7 +92,7 @@ export class LitTerminal extends LitElement {
           composed: true, // Allows the event to cross the shadow DOM boundary
         })
       );
-      this.history = [...this.history, '> ' + commandStr];
+      this.history = [...this.history, `> ${commandStr}`];
       this.inputValue = '';
       LitTerminal.inputHistory.push(commandStr);
       LitTerminal.inputHistoryIndex = 0;
