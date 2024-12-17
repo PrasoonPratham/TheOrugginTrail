@@ -43,9 +43,12 @@ export class LitTerminal extends LitElement {
         ${this.headerText.map((line) => html`<div class="headerOutput">${line}</div>`)}
         <div class="bastard"><b>B</b>est <b>A</b>rchetypal <b>S</b>ystem <b>T</b>erminals <b>A</b>nd <b>R</b>etrograde <b>D</b>evices</div>
         ${this.history.map((line) => html`<div class="output">${line}</div>`)}
-        <span>&#x3e; </spawn><input type="text" .value="${this.inputValue}" ${ref(this.terminalInputElement)}
-                  @keydown="${this.handleEnter}"
-                  @input=${this.handleInput}>
+        <div class="input-line">
+          <span>&#x3e;</span>
+          <input type="text" .value="${this.inputValue}" ${ref(this.terminalInputElement)}
+                    @keydown="${this.handleEnter}"
+                    @input=${this.handleInput}>
+        </div>
       </div>
     `;
   }

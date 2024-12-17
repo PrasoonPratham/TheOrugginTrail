@@ -1,51 +1,44 @@
-const cssString: string = `
-:host {
+const cssString = `
+  :host {
     display: block;
-    margin: 0;
-}
-input {
-    color: blue;
-    width: 90%;
-    background: black;
-    outline: none;
-    border: black;
-    font-family: 'Courier', sans-serif;
-    font-size: 16px;
-    box-sizing: border-box;
-    margin-bottom: 8px;
-    margin-left: 4px;
-    margin-right: 4px;
-}
-.wallet {
     width: 100%;
-    height: 100px;
-    overflow-y: auto;
-    color: blue;
+    height: 100%;
+  }
+
+  .wallet {
+    color: forestgreen;
     background: black;
-    border: 1px solid blue;
+    border: 1px solid chartreuse;
     border-radius: 4px;
     font-family: 'Courier', sans-serif;
     font-size: 16px;
-}
-::-webkit-scrollbar {
-    width: 11px; /* Includes the "border" */
-}
-::-webkit-scrollbar-track {
-  background: black; /* Dark grey track */
-  border-left: 2px solid blue; /* Simulates left border */
-  border-right: 1px solid blue; /* Simulates right border */
-}
-::-webkit-scrollbar-thumb {
-  background: blue; /* Yellow thumb */
-  border-radius: 2px; /* Makes the thumb rectangular but slightly rounded */
-}
-.output {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    text-align: left;
+    padding: 20px;
+    height: calc(100% - 42px);
+    min-height: 300px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+
+  .wallet-history {
+    margin-bottom: 20px;
+  }
+
+  .output {
+    margin: 8px 0;
     white-space: pre-wrap;
-}`;
+    line-height: 1.4;
+  }
+
+  input {
+    width: 100%;
+    background: black;
+    border: none;
+    outline: none;
+    color: forestgreen;
+    font-family: 'Courier', sans-serif;
+    font-size: 16px;
+    padding: 8px 0;
+  }
+`;
+
 export default cssString;

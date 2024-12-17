@@ -35,7 +35,7 @@ const cssString: string = `:host {
           width: 80%;
           margin-left: auto;
           margin-right: auto;
-          margin-bottom: 4px;
+          margin-bottom: 16px;
           text-align: center;
           white-space: pre-wrap;
       }
@@ -50,9 +50,9 @@ const cssString: string = `:host {
           margin-top: 4px;
           margin-bottom: 4px;
           height: calc(100% - 8px);
-          height: 100%;
           overflow-y: auto;
           scroll-behavior: smooth;
+          padding: 20px;
       }
 
       .output {
@@ -71,6 +71,32 @@ const cssString: string = `:host {
           margin-right: auto;
           text-align: center;
           white-space: pre-wrap;
+      }
+
+      .input-line {
+          width: 80%;
+          margin-left: auto;
+          margin-right: auto;
+          display: flex;
+          align-items: center;
+      }
+
+      span {
+          color: forestgreen;
+          font-family: 'Courier', sans-serif;
+          font-size: 16px;
+          margin-right: 8px;
+      }
+
+      input {
+          color: forestgreen;
+          background: black;
+          outline: none;
+          border: none;
+          font-family: 'Courier', sans-serif;
+          font-size: 16px;
+          flex: 1;
+          padding: 0;
       }
 `;
 export default cssString;

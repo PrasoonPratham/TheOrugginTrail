@@ -3,7 +3,7 @@ import { LitElement, html, css } from 'lit';
 export class GameAuth extends LitElement {
   static get properties() {
     return {
-      isAuthenticated: { type: Boolean, reflect: true }
+      isAuthenticated: { type: Boolean }
     };
   }
 
@@ -17,17 +17,22 @@ export class GameAuth extends LitElement {
       display: block;
       width: 100%;
       height: 100%;
+      min-height: 400px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    ::slotted(*) {
+      width: 100%;
+      height: 100%;
     }
   `;
 
   render() {
     return html`
-      <div class="auth-container">
-        ${!this.isAuthenticated 
-          ? html`<slot name="auth"></slot>`
-          : html`<slot name="game"></slot>`
-        }
-      </div>
+      ${!this.isAuthenticated 
+        ? html`<slot name="auth"></slot>`
+        : html`<slot name="game"></slot>`
+      }
     `;
   }
 
@@ -36,7 +41,4 @@ export class GameAuth extends LitElement {
   }
 }
 
-customElements.define('game-auth', GameAuth);
-
-// Export a singleton instance that can be used to manage auth state
-export const gameAuth = document.createElement('game-auth') as GameAuth; 
+customElements.define('game-auth', GameAuth); 

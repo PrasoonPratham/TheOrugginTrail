@@ -178,7 +178,7 @@ class LitWallet extends LitElement {
   private async selectAccount(account: string, connector: Connector) {
     try {
       // Always use Fluent testnet NFT contract
-      const erc721TokenAddress = '0x1E988ba4692e52d00B88D8834dc49B3A1d7B57a9';  // Fluent Test NFT
+      const erc721TokenAddress = '0x9afFD6AEfB51baa77C09B33BA7D4b17ED310a7B2';  // Fluent Test NFT
   
       try {
         // Check token balance for the account
