@@ -12,7 +12,7 @@ const fluentTestnet = defineChain({
   id: 20993,
   name: 'Fluent Testnet',
   network: 'fluent-testnet',
-  nativeCurrency: { name: 'EtherDollar', symbol: 'WZT', decimals: 18 },
+  nativeCurrency: { name: 'EtherDollar', symbol: 'ETH', decimals: 18 },
   rpcUrls: {
     default: { http: ['https://rpc.dev.gblend.xyz/'] },
     public: { http: ['https://rpc.dev.gblend.xyz/'] },

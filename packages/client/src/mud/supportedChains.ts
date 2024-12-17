@@ -21,7 +21,7 @@ const fluentTestnet: MUDChain = {
   name: 'Fluent Testnet',
   id: 20993,
   network: 'fluent-testnet',
-  nativeCurrency: { decimals: 18, name: 'EtherDollar', symbol: 'WZT' },
+  nativeCurrency: { decimals: 18, name: 'EtherDollar', symbol: 'ETH' },
   rpcUrls: {
     default: {
       http: ['https://rpc.dev.gblend.xyz/'],
