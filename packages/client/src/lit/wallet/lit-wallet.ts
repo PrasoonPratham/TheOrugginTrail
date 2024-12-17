@@ -18,7 +18,7 @@ const fluentTestnet = defineChain({
     public: { http: ['https://rpc.dev.gblend.xyz/'] },
   },
   blockExplorers: {
-    default: { name: 'Blockscout', url: 'https://blockscout.dev1.fluentlabs.xyz' },
+    default: { name: 'Blockscout', url: 'https://blockscout.dev.gblend.xyz/' },
   },
 });
 
@@ -178,7 +178,7 @@ class LitWallet extends LitElement {
   private async selectAccount(account: string, connector: Connector) {
     try {
       // Always use Fluent testnet NFT contract
-      const erc721TokenAddress = '0x9afFD6AEfB51baa77C09B33BA7D4b17ED310a7B2';  // Fluent Test NFT
+      const erc721TokenAddress = '0xf7C073b7d96865d8034C45E92203314BCA8F7d7A';  // Fluent Test NFT
   
       try {
         // Check token balance for the account
