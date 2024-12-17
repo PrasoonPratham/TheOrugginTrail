@@ -21,16 +21,18 @@
     "@latticexyz/utils": "2.0.0-next.14",
     "@latticexyz/world": "2.0.0-next.14",
     "@metamask/sdk": "^0.18.1",
+    "@wagmi/connectors": "^5.6.1",
+    "@wagmi/core": "^2.16.0",
     "contracts": "workspace:*",
     "dotenv": "^16.4.5",
     "lit": "^3.1.2",
     "rxjs": "7.5.5",
-    "viem": "1.14.0",
-    "three": "^0.163.0"
+    "three": "^0.163.0",
+    "viem": "2.21.55"
   },
   "devDependencies": {
+    "@types/three": "^0.163.0",
     "vite": ">=4.5.3",
-    "wait-port": "^1.0.4",
-    "@types/three": "^0.163.0"
+    "wait-port": "^1.0.4"
   }
 }
