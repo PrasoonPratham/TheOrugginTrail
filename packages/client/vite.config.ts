@@ -11,5 +11,20 @@ export default defineConfig({
     target: "es2022",
     minify: true,
     sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['three', '@latticexyz/recs', '@latticexyz/world'],
+        },
+      },
+    },
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'es2022',
+    },
+  },
+  json: {
+    stringify: true,
   },
 });

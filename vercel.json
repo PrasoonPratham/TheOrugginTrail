@@ -1,0 +1,5 @@
+{
+  "buildCommand": "curl -L https://foundry.paradigm.xyz | bash && bash $HOME/.foundry/bin/foundryup && pnpm install && pnpm build",
+  "installCommand": "curl -L https://foundry.paradigm.xyz | bash && bash $HOME/.foundry/bin/foundryup && pnpm install",
+  "framework": null
+} 
