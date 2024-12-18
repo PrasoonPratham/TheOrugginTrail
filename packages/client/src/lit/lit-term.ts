@@ -43,9 +43,12 @@ export class LitTerminal extends LitElement {
         ${this.headerText.map((line) => html`<div class="headerOutput">${line}</div>`)}
         <div class="bastard"><b>B</b>est <b>A</b>rchetypal <b>S</b>ystem <b>T</b>erminals <b>A</b>nd <b>R</b>etrograde <b>D</b>evices</div>
         ${this.history.map((line) => html`<div class="output">${line}</div>`)}
-        <span>&#x3e; </spawn><input type="text" .value="${this.inputValue}" ${ref(this.terminalInputElement)}
-                  @keydown="${this.handleEnter}"
-                  @input=${this.handleInput}>
+        <div class="input-line">
+          <span>&#x3e;</span>
+          <input type="text" .value="${this.inputValue}" ${ref(this.terminalInputElement)}
+                    @keydown="${this.handleEnter}"
+                    @input=${this.handleInput}>
+        </div>
       </div>
     `;
   }
@@ -84,7 +87,7 @@ export class LitTerminal extends LitElement {
 
   private handleEnter(e: KeyboardEvent) {
     if (e.key === 'Enter') {
-      const commandStr = this.stripCommandString(this.inputValue);
+      const commandStr = this.inputValue;
       this.dispatchEvent(
         new CustomEvent('command-update', {
           detail: { value: commandStr },
@@ -92,7 +95,7 @@ export class LitTerminal extends LitElement {
           composed: true, // Allows the event to cross the shadow DOM boundary
         })
       );
-      this.history = [...this.history, '> ' + commandStr];
+      this.history = [...this.history, `> ${commandStr}`];
       this.inputValue = '';
       LitTerminal.inputHistory.push(commandStr);
       LitTerminal.inputHistoryIndex = 0;

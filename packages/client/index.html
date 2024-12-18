@@ -8,10 +8,12 @@
   </head>
   <body>
       <div id="gameview">
-		<div id="ui_content">
-		  <l-wallet></l-wallet>
-		  <l-terminal id="terminal"></l-terminal>
-		</div>
+        <div id="ui_content">
+          <game-auth>
+            <l-wallet slot="auth"></l-wallet>
+            <l-terminal slot="game" id="terminal"></l-terminal>
+          </game-auth>
+        </div>
         <div id="viewport"></div>
       </div>
   </body>
